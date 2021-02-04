@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vacinação - Covid-19 no Brasil</title>
+
+  <link rel="stylesheet" href="assets/styles/jqvmap.min.css">
+
+  <script src="assets/javascripts/jquery-1.12.4.min.js"></script>
+  <script src="assets/javascripts/jquery.vmap.min.js"></script>
+  <script src="assets/javascripts/jquery.vmap.brazil.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#vmap').vectorMap({
+        map: 'brazil_br',
+        backgroundColor: '#a5bfdd',
+        borderColor: '#818181',
+        borderOpacity: 0.25,
+        borderWidth: 1,
+        color: '#f4f3f0',
+        enableZoom: true,
+        hoverColor: '#c9dfaf',
+        hoverOpacity: null,
+        normalizeFunction: 'linear',
+        scaleColors: ['#b6d6ff', '#005ace'],
+        selectedColor: '#c9dfaf',
+        selectedRegions: null,
+        showTooltip: true,
+      });
+    });
+  </script>
+</head>
+<body>
+
+  <div id="vmap" style="width: 600px; height: 400px;"></div>
+
+</body>
+</html>
