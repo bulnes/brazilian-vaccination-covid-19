@@ -1,40 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vacinação - Covid-19 no Brasil</title>
 
-  <link rel="stylesheet" href="assets/styles/jqvmap.min.css">
+  <meta name="robots" content="index,follow">
+  <meta name="google-site-verification" content="w1AB6HB4ahaKuQHmEa3gvVt2IjzE_d-vyOKo-wMr0BY">
 
-  <script src="assets/javascripts/jquery-1.12.4.min.js"></script>
-  <script src="assets/javascripts/jquery.vmap.min.js"></script>
-  <script src="assets/javascripts/jquery.vmap.brazil.js"></script>
+  <meta name="description" content="Mapa do Brasil contento o número de vacinados contra a Covid-19, agrupados por estado. Informações oferecidas pelo Portal R7.">
 
-  <script>
-    $(document).ready(function () {
-      $('#vmap').vectorMap({
-        map: 'brazil_br',
-        backgroundColor: '#a5bfdd',
-        borderColor: '#818181',
-        borderOpacity: 0.25,
-        borderWidth: 1,
-        color: '#f4f3f0',
-        enableZoom: true,
-        hoverColor: '#c9dfaf',
-        hoverOpacity: null,
-        normalizeFunction: 'linear',
-        scaleColors: ['#b6d6ff', '#005ace'],
-        selectedColor: '#c9dfaf',
-        selectedRegions: null,
-        showTooltip: true,
-      });
-    });
-  </script>
+  <meta name="author" content="https://www.linkedin.com/in/brunocesarbulnes/">
+  <meta name="author" content="https://www.r7.com/">
+
+  <meta property="og:title" content="Situação da Vacinação contra Covid-19 no Brasil">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bulnes.github.io/brazilian-vaccination-covid-19/">
+
+  <meta name="theme-color" content="#04252d">
+
+  <title>Situação da Vacinação contra Covid-19 no Brasil</title>
+
+  <link rel="shortcut icon" href="assets/images/brazil.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/brazil.png">
+
+  <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
-
-  <div id="vmap" style="width: 600px; height: 400px;"></div>
-
+  
+  <script src="assets/javascripts/scripts.js"></script>
 </body>
 </html>
