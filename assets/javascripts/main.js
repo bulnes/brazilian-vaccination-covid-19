@@ -2,8 +2,8 @@ var Main = (() => {
 
   const initApp = () => {
     DataManipulation.setDataSlots();
-    DOM.preloadImages();
     document.getElementById('app').classList.remove('app--loading');
+    DOM.preloadImages();
   };
 
   const start = () => {
