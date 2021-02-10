@@ -2,7 +2,7 @@ var DOM = (function() {
 
   var buildStates = function() {
     var structure = [];
-    var states = States.getStatesFromRegion();
+    var states = [];
 
     for (var i = 0; i < states.length; i++) {
       var state = states[i];
@@ -19,6 +19,8 @@ var DOM = (function() {
 
     $bgContainer.className = '';
     $bgContainer.classList.add(typeClass);
+
+    DataManipulation.setDataSlots(type);
   };
 
   return {

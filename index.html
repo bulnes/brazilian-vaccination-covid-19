@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
-  <div id="app">
+  <div id="app" class="app--loading">
     <main id="app__map"></main>
 
     <aside id="app__states">
@@ -168,17 +168,17 @@
 
     <aside id="app__numbers">
 
-      <div class="numbers__region">Região Sudeste</div>
-      <div class="numbers__state">São Paulo</div>
+      <div class="numbers__region"></div>
+      <div class="numbers__state"></div>
 
       <div class="numbers__population">
         <span class="numbers__label">População*</span> 
-        <span class="numbers__number">45.919.049</span>
+        <span class="numbers__number"></span>
       </div>
 
       <div class="numbers__applications">
         <span class="numbers__label">Doses aplicadas*</span> 
-        <span class="numbers__number">45.919.049</span>
+        <span class="numbers__number"></span>
       </div>
 
       <div class="numbers__percent">
@@ -186,9 +186,11 @@
         <span class="numbers__number">45.919.049</span>
       </div>
 
+      <!--
       <div class="numbers__message">
         * Dados relativos ao estado São Paulo
       </div>
+      -->
 
       <div class="numbers__font">
         Fonte: Ministério da Saúde
@@ -196,8 +198,11 @@
     </aside>
   </div>
 
+  <script src="assets/javascripts/data-manipulation.js"></script>
+  <script src="assets/javascripts/data-storage.js"></script>
   <script src="assets/javascripts/data-loader.js"></script>
   <script src="assets/javascripts/states.js"></script>
+  <script src="assets/javascripts/vacination.js"></script>
   <script src="assets/javascripts/dom.js"></script>
   <script src="assets/javascripts/main.js"></script>
 </body>

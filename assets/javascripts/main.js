@@ -1,26 +1,29 @@
-var Main = (function() {
+var Main = (() => {
 
-  var start = function() {
+  const initApp = () => {
+    DataManipulation.setDataSlots();
+    document.getElementById('app').classList.remove('app--loading');
+  };
+
+  const start = () => {
+    const validLocalStorage = DataStorage.isValidLocalStorage()
+    if (validLocalStorage) {
+      initApp();
+      return true;
+    }
+
     DataLoader.getData({
-      before: function() {
-        console.log('iniciando o app');
-      },
-
-      success: function(data) {
-        console.log('meus dados');
-        console.log(data);
-
-        console.log(DOM.buildStates())
-      },
-
-      error: function() {
-        console.log('algo deu errado');
-      },
+      success: data => {
+        DataStorage.setLocalStorage(data);
+        initApp();
+      }
     });
+    
+    return true;
   };
 
   return {
-    start: start
+    start
   };
 })(); 
 
