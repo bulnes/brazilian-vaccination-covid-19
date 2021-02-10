@@ -48,6 +48,6 @@ const DataManipulation = (() => {
       setPopulationNumber(uf);
       setApplicationNumber(uf);
       setPercentNumber(uf);
-    }
+    },
   };
 })();

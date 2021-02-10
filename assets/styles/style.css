@@ -28,6 +28,10 @@ html, body {
   width: 100%;
 }
 
+#preload {
+  display: none;
+}
+
 #app {
   position: relative;
   height: 100%;
@@ -81,7 +85,7 @@ html, body {
   background-repeat: no-repeat;
   background-size: contain;
 
-  /* transition: background-image 1s ease-in-out; */
+  transition: background-image 1s ease-in-out;
 }
 
 #app__map.map--ac { background-image: url('../images/2560x1440/VACINACAO_AC_04.png'); }
@@ -116,6 +120,9 @@ html, body {
 
 #app__states {
   background-color: #07262e;
+  background-image: url('../images/aside-background.png');
+  background-repeat: repeat;
+  background-size: 100%;
   height: 100%;
   width: 12%;
   max-width: 292px;
@@ -171,6 +178,9 @@ html, body {
 
 #app__numbers {
   background-color: #07262e;
+  background-image: url('../images/aside-background.png');
+  background-repeat: repeat;
+  background-size: 50%;
   height: 100%;
   width: 27.1%;
   min-width: 394px;
@@ -191,10 +201,11 @@ html, body {
   font-weight: 700;
   text-transform: uppercase;
   padding: 10px 25px;
+  opacity: .8;
 }
 
 #app__numbers .numbers__state {
-  background-color: rgba(0,74,85,.7);
+  background-color: rgba(0,74,85,.6);
   color: #ffffff;
   height: 60px;
   font-size: 26px;
