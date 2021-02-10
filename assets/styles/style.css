@@ -1,23 +1,212 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=block');
 
 :root {
-  --color-layer-01: #04252d;
-  --color-layer-02: #;
-  --color-layer-03: #0bafb3;
-  --color-layer-04: #04e2f2;
-  --color-layer-05: #eef2f2;
+  --color-layer-01: #00212a;
+  --color-layer-02: #004a55;
+  --color-layer-03: #007781;
+  --color-layer-04: #00e1f3;
+  --color-layer-05: #ffffff;
 
   --margin-bottom: 1.2rem;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html, body {
+  background-image: url('../images/2560x1440/fundo.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   font-family: 'Open Sans', sans-serif;
   font-size: 100%;
   height: 100%;
   width: 100%;
-  overflow: hidden;
-  margin: 0;
 }
 
+#app {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
 
+#app__map {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url('../images/2560x1440/VACINACAO_BR_04.png');
+  background-position: -25% 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  /* transition: background-image 1s ease-in-out; */
+}
+#app__map.map--ac { background-image: url('../images/2560x1440/VACINACAO_AC_04.png'); }
+#app__map.map--al { background-image: url('../images/2560x1440/VACINACAO_AL_04.png'); }
+#app__map.map--am { background-image: url('../images/2560x1440/VACINACAO_AM_04.png'); }
+#app__map.map--ap { background-image: url('../images/2560x1440/VACINACAO_AP_04.png'); }
+#app__map.map--ba { background-image: url('../images/2560x1440/VACINACAO_BA_04.png'); }
+#app__map.map--br { background-image: url('../images/2560x1440/VACINACAO_BR_04.png'); }
+#app__map.map--ce { background-image: url('../images/2560x1440/VACINACAO_CE_04.png'); }
+#app__map.map--df { background-image: url('../images/2560x1440/VACINACAO_DF_04.png'); }
+#app__map.map--es { background-image: url('../images/2560x1440/VACINACAO_ES_04.png'); }
+#app__map.map--go { background-image: url('../images/2560x1440/VACINACAO_GO_04.png'); }
+#app__map.map--ma { background-image: url('../images/2560x1440/VACINACAO_MA_04.png'); }
+#app__map.map--mg { background-image: url('../images/2560x1440/VACINACAO_MG_04.png'); }
+#app__map.map--ms { background-image: url('../images/2560x1440/VACINACAO_MS_04.png'); }
+#app__map.map--mt { background-image: url('../images/2560x1440/VACINACAO_MT_04.png'); }
+#app__map.map--pa { background-image: url('../images/2560x1440/VACINACAO_PA_04.png'); }
+#app__map.map--pb { background-image: url('../images/2560x1440/VACINACAO_PB_04.png'); }
+#app__map.map--pe { background-image: url('../images/2560x1440/VACINACAO_PE_04.png'); }
+#app__map.map--pi { background-image: url('../images/2560x1440/VACINACAO_PI_04.png'); }
+#app__map.map--pr { background-image: url('../images/2560x1440/VACINACAO_PR_04.png'); }
+#app__map.map--rj { background-image: url('../images/2560x1440/VACINACAO_RJ_04.png'); }
+#app__map.map--rn { background-image: url('../images/2560x1440/VACINACAO_RN_04.png'); }
+#app__map.map--ro { background-image: url('../images/2560x1440/VACINACAO_RO_04.png'); }
+#app__map.map--rr { background-image: url('../images/2560x1440/VACINACAO_RR_04.png'); }
+#app__map.map--rs { background-image: url('../images/2560x1440/VACINACAO_RS_04.png'); }
+#app__map.map--sc { background-image: url('../images/2560x1440/VACINACAO_SC_04.png'); }
+#app__map.map--se { background-image: url('../images/2560x1440/VACINACAO_SE_04.png'); }
+#app__map.map--sp { background-image: url('../images/2560x1440/VACINACAO_SP_04.png'); }
+#app__map.map--to { background-image: url('../images/2560x1440/VACINACAO_TO_04.png'); }
+
+
+#app__states {
+  background-color: #07262e;
+  height: 100%;
+  width: 12%;
+  max-width: 292px;
+  padding: 15px 10px 15px 0;
+  text-align: right;
+  overflow: auto;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#app__states .region {
+  color: #00d6e7;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: .94rem;
+  margin-bottom: 5px;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;  
+}
+  #app__states .region::before {
+    position: absolute;
+    top: 6px;
+    overflow: hidden;
+    width: 98%;
+    height: 55%;
+    content: '\a0';
+    background-color: #007781;
+    margin-left: -100%;
+    text-align: right;
+  }
+  #app__states .state {
+    cursor: pointer;
+    font-size: 84%;
+    margin-bottom: 2.5px;
+  }
+  #app__states .state__name {
+    color: #00d6e7;
+    font-size: 80%;
+  }
+  #app__states .state__uf {
+    color: white;
+    font-size: 100%;
+    font-weight: 700;
+    display: inline-block;
+    width: 22px;
+    text-align: left;
+  }
+
+
+#app__numbers {
+  background-color: #07262e;
+  height: 100%;
+  width: 27.1%;
+  min-width: 394px;
+  max-width: 694px;
+  padding-top: 80px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+#app__numbers .numbers__region {
+  background-color: #00e1f3;
+  color: #001e2f;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 25px;
+}
+
+#app__numbers .numbers__state {
+  background-color: rgba(0,74,85,.7);
+  color: #ffffff;
+  height: 60px;
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 15px 25px;
+  margin-bottom: 20px;
+}
+
+#app__numbers .numbers__label {
+  display: block;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 25px;
+  margin-bottom: -5px;
+}
+
+#app__numbers .numbers__number {
+  display: block;
+  color: #ffffff;
+  font-size: 37px;
+  font-weight: 700;
+  margin-left: 25px;
+  margin-bottom: 20px;
+}
+
+#app__numbers .numbers__applications .numbers__number {
+  color: #00e1f3;
+  font-size: 53px;
+}
+
+#app__numbers .numbers__percent .numbers__number {
+  color: #00e1f3;
+}
+
+#app__numbers .numbers__message {
+  color: #ffffff;
+  border-bottom: 1px solid #00e1f3;
+  margin-left: 25px;
+  margin-right: 25px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+#app__numbers .numbers__font {
+  color: #ffffff;
+  margin-left: 25px;
+}
