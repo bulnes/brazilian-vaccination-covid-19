@@ -23,8 +23,22 @@ var DOM = (function() {
     DataManipulation.setDataSlots(type);
   };
 
-  return {
-    buildStates: buildStates,
-    changeBackground: changeBackground
+  const getPreloadImageTemplate = uf => {
+    const name = uf.toUpperCase();
+    const src = `assets/images/2560x1440/VACINACAO_${name}_04.png`;
+
+    return `<img alt="preloading" src="${src}">`;
+  }
+
+  const preloadImages = () => {
+    const images = States.getStates().map(state => getPreloadImageTemplate(state.uf)).join('');
+
+    const $div = document.createElement('div');
+    $div.id = 'preload';
+    $div.innerHTML = images;
+
+    document.body.appendChild($div);
   };
+
+  return { buildStates, changeBackground, preloadImages };
 })();
