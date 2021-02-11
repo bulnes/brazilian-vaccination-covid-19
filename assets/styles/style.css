@@ -386,15 +386,38 @@ html, body {
 }
 
 /* Orientation Lock */
-/* Source: https://css-tricks.com/snippets/css/orientation-lock/ */
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-  html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    overflow-x: hidden;
+@media (orientation: landscape) {
+  body {
+    position: relative;
+  }
+  body::before, body::after {
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+  body::before {
+    content: '';
+    background-image: url('../images/orientation.png');
+    background-repeat: no-repeat;    
+    background-size: 100%;
+    background-position: center center;
+    background-color: #212121;
+
+    z-index: 99999999;
+  }
+  body::after {
+    content: 'Por favor, vire seu dispositivo';
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: #0000;
+    color: #fff;
+    font-weight: 400;
+    padding-bottom: 4rem;
+    z-index: 999999999;
   }
 }
