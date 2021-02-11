@@ -2,6 +2,12 @@ var Main = (() => {
 
   const initApp = () => {
     DOM.buildStates();
+
+    const selectedClass = 'state--selected';
+    document
+      .querySelector('#app__states .state')
+      .classList.add(selectedClass);
+
     DataManipulation.setDataSlots();
     document.getElementById('app').classList.remove('app--loading');
     DOM.preloadImages();
