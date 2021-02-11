@@ -374,4 +374,7 @@ html, body {
     #app__numbers .numbers__applications .numbers__number {
       font-size: 28px;
     }
+    #app__numbers .numbers__population {
+      float: right;
+    }
 }
