@@ -386,9 +386,13 @@ html, body {
 }
 
 /* Orientation Lock */
-@media (orientation: landscape) {
+/* https://css-tricks.com/snippets/css/orientation-lock */
+@media screen and (min-width: 320px) and (max-width: 699px) and (orientation: landscape) {
   body {
     position: relative;
+    width: 100vw;
+    height: 100h;
+    overflow: hidden;
   }
   body::before, body::after {
     position: absolute;
