@@ -390,8 +390,8 @@ html, body {
 @media screen and (min-width: 320px) and (max-width: 699px) and (orientation: landscape) {
   body {
     position: relative;
-    width: 100vw;
-    height: 100h;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
   }
   body::before, body::after {
