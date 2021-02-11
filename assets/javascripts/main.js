@@ -1,6 +1,7 @@
 var Main = (() => {
 
   const initApp = () => {
+    DOM.buildStates();
     DataManipulation.setDataSlots();
     document.getElementById('app').classList.remove('app--loading');
     DOM.preloadImages();

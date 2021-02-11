@@ -1,24 +1,47 @@
 var DOM = (function() {
 
-  var buildStates = function() {
-    var structure = [];
-    var states = [];
+  const buildStates = () => {
+    let countryRegion = '';
+    
+    const statesHTML = [{ 
+      uf: 'BR', 
+      state: 'Todo o Brasil', 
+      region: '' 
+    }, ...States.getStates()].map(s => {
+      let html = '';
+      const { region, uf, state } = s;
 
-    for (var i = 0; i < states.length; i++) {
-      var state = states[i];
-      var html = States.getStateHTML(state);
-      structure.push(html);
-    }
+      if (countryRegion !== region) {
+        countryRegion = region;
+        html = `<h3 class="region">${countryRegion}</h3>`;
+      }
 
-    console.log(structure);
+      html += `
+        <div class="state" data-uf="${uf}" onclick="DOM.changeBackground(this, '${uf}')">
+          <span class="state__name">${state}</span> 
+          <span class="state__uf">${uf}</span>
+        </div>
+      `;
+
+      return html;
+    });
+
+    document.getElementById('app__states').innerHTML = statesHTML.join('');
   };
 
-  var changeBackground = function(type) {
-    var $bgContainer = document.getElementById('app__map');
-    var typeClass = 'map--' + type;
+  const changeBackground = function(el, type) {
+    const $bgContainer = document.getElementById('app__map');
+    const typeClass = 'map--' + type.toLowerCase();
+    const selectedClass = 'state--selected';
 
     $bgContainer.className = '';
     $bgContainer.classList.add(typeClass);
+
+    document
+      .querySelectorAll('#app__states .state')
+      .forEach(state => state.classList.remove(selectedClass));
+
+    el.classList.add(selectedClass);
 
     DataManipulation.setDataSlots(type);
   };
