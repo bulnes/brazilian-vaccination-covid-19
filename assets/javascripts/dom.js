@@ -43,7 +43,7 @@ var DOM = (function() {
 
     el.classList.add(selectedClass);
 
-    DataManipulation.setDataSlots(type);
+    DataManipulation.setDataSlots(type === 'BR' ? '' : type);
   };
 
   const getPreloadImageTemplate = uf => {
