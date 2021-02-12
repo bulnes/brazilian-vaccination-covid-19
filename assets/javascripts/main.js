@@ -14,11 +14,11 @@ var Main = (() => {
   };
 
   const start = () => {
-    // const validLocalStorage = DataStorage.isValidLocalStorage()
-    // if (validLocalStorage) {
-    //  initApp();
-    //  return true;
-    // }
+    const validLocalStorage = DataStorage.isValidLocalStorage()
+    if (validLocalStorage) {
+      initApp();
+      return true;
+    }
 
     DataLoader.getData({
       success: data => {
