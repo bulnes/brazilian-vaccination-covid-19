@@ -268,7 +268,7 @@ html, body {
   margin-right: 35px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 771px) {
 
   #app__map {
     width: 48%;
