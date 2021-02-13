@@ -118,6 +118,15 @@ html, body {
 #app__map.map--sp { background-image: url('../images/2560x1440/VACINACAO_SP_04.png'); }
 #app__map.map--to { background-image: url('../images/2560x1440/VACINACAO_TO_04.png'); }
 
+#app__map .r7-logo {
+  display: block;
+  text-align: center;
+
+  position: absolute;
+  bottom: 5px;
+  left: 25px;
+}
+
 
 #app__states {
   background-color: #07262e;
@@ -196,7 +205,7 @@ html, body {
   background-size: 50%;
   height: 100%;
   width: 28%;
-  padding-top: 80px;
+  padding-top: 40px;
 
   position: absolute;
   top: 0;
@@ -264,16 +273,19 @@ html, body {
 
 #app__numbers .numbers__font {
   color: #ffffff;
+  font-size: 12px;
   margin-left: 25px;
-  margin-right: 35px;
+  margin-right: 50px;
+  margin-bottom: 20px;
 }
 
-@media (max-width: 771px) {
+@media (max-width: 1150px) {
 
   #app__map {
-    width: 48%;
-    margin-left: 23%;
+    width: 53%;
+    margin-left: 18%;
     height: calc(100% - 33px);
+    height: 100%;
     background-position: 50% 0;
   }
 
@@ -313,8 +325,24 @@ html, body {
     }
     #app__numbers .numbers__font {
       font-size: 11px;
-      margin: 0 15px;
+      margin: 0 50px 0 15px;
     }
+}
+
+@media (min-width: 576px) and (max-width: 1150px) {
+
+  #app__states {
+    width: 18%;
+    min-width: 150px;
+  }
+
+}
+
+@media (max-width: 771px) {
+  
+  #app__map .r7-logo {
+    bottom: 35px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -324,6 +352,15 @@ html, body {
     margin: 60px 0 0;
     height: 56.25vw;
   }
+
+    #app__map .r7-logo {
+      bottom: 5px;
+      left: 15px;
+    }
+    #app__map .r7-logo img {
+      width: 62px;
+      height: 13px;
+    }
 
   #app__states {
     height: 60px;
@@ -382,6 +419,9 @@ html, body {
     }
     #app__numbers .numbers__population {
       float: right;
+    }
+    #app__numbers .numbers__font {
+      font-size: 11px;
     }
 }
 
