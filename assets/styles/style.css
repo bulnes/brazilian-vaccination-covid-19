@@ -343,6 +343,11 @@ html, body {
   #app__map .r7-logo {
     bottom: 35px;
   }
+
+  #app__map .r7-logo img {
+    width: 87px;
+    height: 18px;
+  }
 }
 
 @media (max-width: 575px) {
