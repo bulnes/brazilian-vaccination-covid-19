@@ -71,6 +71,33 @@ html, body {
     100% { transform: rotate(360deg); }
   }
 
+  #app.app--error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #app.app--error::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+
+    background-color: #008084;
+  }
+  #app.app--error::after {
+    content: 'Não foi possível exibir o mapa da vacinação. Tente novamente.';
+    z-index: 100;
+
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 2rem;
+  }
+
 #app__map {
   position: fixed;
   top: 0;

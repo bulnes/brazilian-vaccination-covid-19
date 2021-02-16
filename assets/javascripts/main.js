@@ -1,5 +1,18 @@
 var Main = (() => {
 
+  const getSnippet = () => SnippetLoader.getSnippetData(configureApp, setErrorPage);
+
+  const configureApp = data => {
+    DataStorage.setLocalStorage(data.itens || data);
+    initApp();
+  };
+
+  const setErrorPage = () => {
+    const app = document.getElementById('app');
+    app.className = '';    
+    app.classList.add('app--error');
+  };
+
   const initApp = () => {
     DOM.buildStates();
 
@@ -14,17 +27,9 @@ var Main = (() => {
   };
 
   const start = () => {
-    const validLocalStorage = DataStorage.isValidLocalStorage()
-    if (validLocalStorage) {
-      initApp();
-      return true;
-    }
-
     DataLoader.getData({
-      success: data => {
-        DataStorage.setLocalStorage(data);
-        initApp();
-      }
+      success: configureApp,
+      error: getSnippet
     });
     
     return true;

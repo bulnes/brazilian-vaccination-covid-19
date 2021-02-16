@@ -26,8 +26,6 @@ var DataLoader = (function() {
     var callbacks = getCallbacks(cb);
     callbacks.before();
 
-    var src = getTodaySrc();
-
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && xhr.status == 200) {
@@ -41,17 +39,6 @@ var DataLoader = (function() {
 
     xhr.open('GET', src, true);
     xhr.send();
-  };
-
-  var getTodaySrc = function() {
-    var data = new Date();
-    var today = [
-      data.getFullYear(), 
-      data.getMonth() + 1, 
-      data.getUTCDate()
-    ].join('-');
-
-    return src + '?' + today;
   };
 
   return {
