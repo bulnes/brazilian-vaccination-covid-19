@@ -1,3 +1,4 @@
-const soma = (a, b) => a + b;
+import start from './javascripts/main';
+import './styles/style.scss';
 
-console.log(soma(1, 2));
+window.addEventListener('load', start);

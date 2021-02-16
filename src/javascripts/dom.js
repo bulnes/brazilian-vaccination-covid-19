@@ -1,67 +1,70 @@
-var DOM = (function() {
+import setDataSlots from "./data-manipulation";
+import { getStates } from "./states";
 
-  const buildStates = () => {
-    let countryRegion = '';
-    
-    const statesHTML = [{ 
-      uf: 'BR', 
-      state: 'Todo o Brasil', 
-      region: '' 
-    }, ...States.getStates()].map(s => {
-      let html = '';
-      const { region, uf, state } = s;
+const buildStates = () => {
+  let countryRegion = '';
+  
+  const statesHTML = [{ 
+    uf: 'BR', 
+    state: 'Todo o Brasil', 
+    region: '' 
+  }, ...getStates()].map(s => {
+    const { region, uf, state } = s;
+    let header = '';
 
-      if (countryRegion !== region) {
-        countryRegion = region;
-        html = `<h3 class="region">${countryRegion}</h3>`;
-      }
+    if (countryRegion !== region) {
+      header = `<h3 class="region">${region}</h3>`;
+    }
 
-      html += `
-        <div class="state" data-uf="${uf}" onclick="DOM.changeBackground(this, '${uf}')">
-          <span class="state__name">${state}</span> 
-          <span class="state__uf">${uf}</span>
-        </div>
-      `;
+    const stateHTML = document.createElement('div');
+    stateHTML.setAttribute('data-uf', uf);
+    stateHTML.classList.add('state');
+    stateHTML.onclick = changeBackground;
+    stateHTML.innerHTML = `
+      <span class="state__name">${state}</span> 
+      <span class="state__uf">${uf}</span>
+    `;
 
-      return html;
-    });
+    return `${header} ${stateHTML.outerHTML}`;
+  });
 
-    document.getElementById('app__states').innerHTML = statesHTML.join('');
-  };
+  console.log(statesHTML);
 
-  const changeBackground = function(el, type) {
-    const $bgContainer = document.getElementById('app__map');
-    const typeClass = 'map--' + type.toLowerCase();
-    const selectedClass = 'state--selected';
+  document.getElementById('app__states').innerHTML = statesHTML.join('');
+};
 
-    $bgContainer.className = '';
-    $bgContainer.classList.add(typeClass);
+const changeBackground = function(el, type) {
+  const $bgContainer = document.getElementById('app__map');
+  const typeClass = 'map--' + type.toLowerCase();
+  const selectedClass = 'state--selected';
 
-    document
-      .querySelectorAll('#app__states .state')
-      .forEach(state => state.classList.remove(selectedClass));
+  $bgContainer.className = '';
+  $bgContainer.classList.add(typeClass);
 
-    el.classList.add(selectedClass);
+  document
+    .querySelectorAll('#app__states .state')
+    .forEach(state => state.classList.remove(selectedClass));
 
-    DataManipulation.setDataSlots(type === 'BR' ? '' : type);
-  };
+  el.classList.add(selectedClass);
 
-  const getPreloadImageTemplate = uf => {
-    const name = uf.toUpperCase();
-    const src = `assets/images/2560x1440/VACINACAO_${name}_04.png`;
+  setDataSlots(type === 'BR' ? '' : type);
+};
 
-    return `<img alt="preloading" src="${src}">`;
-  }
+const getPreloadImageTemplate = uf => {
+  const name = uf.toUpperCase();
+  const src = `assets/images/2560x1440/VACINACAO_${name}_04.png`;
 
-  const preloadImages = () => {
-    const images = States.getStates().map(state => getPreloadImageTemplate(state.uf)).join('');
+  return `<img alt="preloading" src="${src}">`;
+}
 
-    const $div = document.createElement('div');
-    $div.id = 'preload';
-    $div.innerHTML = images;
+const preloadImages = () => {
+  const images = getStates().map(state => getPreloadImageTemplate(state.uf)).join('');
 
-    document.body.appendChild($div);
-  };
+  const $div = document.createElement('div');
+  $div.id = 'preload';
+  $div.innerHTML = images;
 
-  return { buildStates, changeBackground, preloadImages };
-})();
+  document.body.appendChild($div);
+};
+
+export { buildStates, changeBackground, preloadImages };

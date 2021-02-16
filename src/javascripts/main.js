@@ -1,38 +1,36 @@
-var Main = (() => {
+import getData from "./data-loader";
+import setDataSlots from "./data-manipulation";
+import { isValidLocalStorage, setLocalStorage } from "./data-storage";
+import { buildStates, preloadImages } from "./dom";
 
-  const initApp = () => {
-    DOM.buildStates();
+const initApp = () => {
+  buildStates();
 
-    const selectedClass = 'state--selected';
-    document
-      .querySelector('#app__states .state')
-      .classList.add(selectedClass);
+  const selectedClass = 'state--selected';
+  document
+    .querySelector('#app__states .state')
+    .classList.add(selectedClass);
 
-    DataManipulation.setDataSlots();
-    document.getElementById('app').classList.remove('app--loading');
-    DOM.preloadImages();
-  };
+  setDataSlots();
+  document.getElementById('app').classList.remove('app--loading');
+  preloadImages();
+};
 
-  const start = () => {
-    const validLocalStorage = DataStorage.isValidLocalStorage()
-    if (validLocalStorage) {
-      initApp();
-      return true;
-    }
-
-    DataLoader.getData({
-      success: data => {
-        DataStorage.setLocalStorage(data);
-        initApp();
-      }
-    });
-    
+const start = () => {
+  const validLocalStorage = isValidLocalStorage();
+  if (validLocalStorage) {
+    initApp();
     return true;
-  };
+  }
 
-  return {
-    start
-  };
-})(); 
+  getData({
+    success: data => {
+      setLocalStorage(data);
+      initApp();
+    }
+  });
+  
+  return true;
+};
 
-window.addEventListener('load', Main.start);
+export default start;
