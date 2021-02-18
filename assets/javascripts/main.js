@@ -27,12 +27,12 @@ var Main = (() => {
   };
 
   const start = () => {
-    DataLoader.getData({
-      success: configureApp,
-      error: getSnippet
+    SnippetUseChecker.redirectToRightDatabase(getSnippet, function() {
+      DataLoader.getData({
+        success: configureApp,
+        error: getSnippet
+      });
     });
-    
-    return true;
   };
 
   return {
