@@ -1,0 +1,23 @@
+{
+  "name": "brazilian-vaccination-covid-19",
+  "version": "1.0.0",
+  "description": "Gráfico interativo contento a situação da Vacinação contra Convid-19 no Brasil",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bulnes/brazilian-vaccination-covid-19.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bulnes/brazilian-vaccination-covid-19/issues"
+  },
+  "homepage": "https://github.com/bulnes/brazilian-vaccination-covid-19#readme",
+  "devDependencies": {
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.5.0"
+  }
+}
