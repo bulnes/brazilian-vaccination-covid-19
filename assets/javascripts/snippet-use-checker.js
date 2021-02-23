@@ -20,9 +20,6 @@ var SnippetUseChecker = (function() {
   var redirectToRightDatabase = function(snippetDatabase, scDatabase) {
     loadConfiguration(function(data) {
       var isToUseSnippet = data.mapa_via_snippet.toLowerCase() !== 'no';
-
-      console.log('isToUseSnippet', isToUseSnippet);
-
       isToUseSnippet ? snippetDatabase() : scDatabase();
     });
   };

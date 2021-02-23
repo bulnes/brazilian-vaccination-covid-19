@@ -28,19 +28,35 @@ const DataManipulation = (() => {
   };
 
   const setApplicationNumber = uf => {
-    const total = Vacination.getVaccinatedsByUF(uf);
+    const total = Vacination.getVaccinatedsByUF(uf, 1);
     const formatTotal = Utils.formatNumber(total);
+    const percentTotal = Utils.calculatePercent(uf, 1);
+    const percentTotalFormated = Utils.formatNumber(percentTotal);
 
-    document.querySelector('#app__numbers .numbers__applications .numbers__number').innerHTML = formatTotal;
+    const $applications = document.querySelector('.numbers__applications');
+    const $number = $applications.querySelector('.numbers__number');
+    const $control = $applications.querySelector('.numbers__progress-control');
+    const $counter = $applications.querySelector('.numbers__progress-counter');
+
+    $number.innerHTML = formatTotal;
+    $control.style.width = `${percentTotal}%`;
+    $counter.innerHTML = `${percentTotalFormated}%`;
   };
 
   const setPercentNumber = uf => {
-    const people = uf ? States.getState(uf).people : States.getBrazilPopulation();
-    const vaccinated = Vacination.getVaccinatedsByUF(uf);
-    const percent = (vaccinated * 100 / people).toFixed(2);
-    const format = Utils.formatNumber(percent)
+    const total = Vacination.getVaccinatedsByUF(uf, 2);
+    const totalFormated = Utils.formatNumber(total);
+    const percentTotal = Utils.calculatePercent(uf, 2, false);
+    const percentTotalFormated = Utils.formatNumber(percentTotal);
 
-    document.querySelector('#app__numbers .numbers__percent .numbers__number').innerHTML = `${format}%`;
+    const $percent = document.querySelector('.numbers__percent');
+    const $number = $percent.querySelector('.numbers__number');
+    const $control = $percent.querySelector('.numbers__progress-control');
+    const $counter = $percent.querySelector('.numbers__progress-counter');
+
+    $number.innerHTML = totalFormated;
+    $control.style.width = `${percentTotal}%`;
+    $counter.innerHTML = `${percentTotalFormated}%`;
   };
 
   return { 

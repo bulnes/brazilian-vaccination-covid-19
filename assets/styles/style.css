@@ -282,7 +282,7 @@ html, body {
 
 #app__numbers .numbers__applications .numbers__number {
   color: #00e1f3;
-  font-size: 53px;
+  font-size: 50px;
 }
 
 #app__numbers .numbers__percent .numbers__number {
@@ -305,6 +305,35 @@ html, body {
   margin-right: 50px;
   margin-bottom: 20px;
 }
+
+.numbers__progress {
+  margin: -15px 0 20px 25px;
+  display: flex;
+  align-items: center;
+}
+  .numbers__progress .numbers__progress-bar {
+    display: inline-block;
+    height: 22px;
+    width: 100%;
+    max-width: 180px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    position: relative;
+    padding: 0;
+  }
+  .numbers__progress .numbers__progress-control {
+    background-color: #00e1f3;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .numbers__progress .numbers__progress-counter {
+    font-weight: 700;
+    color: #00e1f3;
+  }
 
 @media (max-width: 1150px) {
 
@@ -354,6 +383,12 @@ html, body {
       font-size: 11px;
       margin: 0 50px 0 15px;
     }
+
+  .numbers__progress {
+    margin-left: 15px;
+    margin-top: -5px;
+    margin-right: 60px;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 1150px) {
@@ -381,7 +416,7 @@ html, body {
 
   #app__map {
     width: 100%;
-    margin: 60px 0 0;
+    margin: 50px 0 0;
     height: 56.25vw;
   }
 
@@ -395,7 +430,7 @@ html, body {
     }
 
   #app__states {
-    height: 60px;
+    height: 50px;
     width: 100%;
     padding: 0;
     overflow-y: hidden;
@@ -433,8 +468,8 @@ html, body {
 
   #app__numbers { 
     width: 100%;
-    height: calc(100% - 56.25vw - 60px);
-    margin: calc(56.25vw + 60px) 0 32px 0;
+    height: calc(100% - 56.25vw - 50px);
+    margin: calc(56.25vw + 50px) 0 32px 0;
     padding-top: 0;
     padding-bottom: 32px;
     background-image: none;
@@ -449,12 +484,21 @@ html, body {
     #app__numbers .numbers__applications .numbers__number {
       font-size: 28px;
     }
+    #app__numbers .numbers__region {
+      display: none;
+    }
     #app__numbers .numbers__population {
       float: right;
     }
     #app__numbers .numbers__font {
       font-size: 11px;
     }
+
+  .numbers__progress {
+    width: 50%;
+    margin-bottom: 10px;
+    margin-top: 0px;
+  }
 }
 
 /* Orientation Lock */
