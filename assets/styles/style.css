@@ -154,6 +154,27 @@ html, body {
   left: 25px;
 }
 
+.home {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.r7-button{
+  height: 35px;
+  width: 37px;
+  background-color: transparent;
+  border: transparent;
+  margin-right: 10px;
+}
+
+.r7-button img {
+  height: 35px;
+  width: 37px;
+}
+
+
 
 #app__states {
   background-color: #07262e;
@@ -335,6 +356,7 @@ html, body {
     color: #00e1f3;
   }
 
+
 @media (max-width: 1150px) {
 
   #app__map {
@@ -396,6 +418,10 @@ html, body {
   #app__states {
     width: 18%;
     min-width: 150px;
+  }
+
+  .home {
+    top: 5%;
   }
 
 }
