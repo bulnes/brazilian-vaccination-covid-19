@@ -161,17 +161,25 @@ html, body {
   z-index: 3;
 }
 
-.r7-button{
+.r7-button {
   height: 35px;
-  width: 37px;
+  width: 160px;
   background-color: transparent;
   border: transparent;
-  margin-right: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
 }
 
 .r7-button img {
   height: 35px;
   width: 37px;
+}
+
+.r7-button__text {
+  margin-right: 10px;
 }
 
 
