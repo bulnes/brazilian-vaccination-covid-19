@@ -85,12 +85,29 @@ var DOM = (function() {
     document.querySelectorAll('.map-state--path').forEach(state => {
       state.onclick = function() {
         const element = document.querySelector(`[data-uf=${state.id.toUpperCase()}]`);
+        window.console.log(state.id);
         DOM.changeSelected(element, state.id);
       }
     });
+
+    window.addEventListener('hashchange', changeHash(window.location.hash));
   };
 
+  const changeHash = function(hash) {
+    let hashToUse = hash ? hash.substr(1) : window.location.hash.substr(1);
+    if (hashToUse !== '') {
+      if (!States.getState(hashToUse.toUpperCase())) {
+        hashToUse = 'br';
+      }
+      
+      const element = document.querySelector(`[data-uf=${hashToUse.toUpperCase()}]`);
+      DOM.changeSelected(element, hashToUse); 
+    }
+  }
+
   const changeSelected = function(el, type) {
+    const typeToUse = type.toLowerCase();
+
     const selectedClass = 'state--selected';
     const selectedStateClass = 'map-svg--selected';
 
@@ -98,12 +115,12 @@ var DOM = (function() {
 
     const svgMap = [...document.querySelectorAll('.map-state--path')];
     
-    if (type !== 'BR') {
-      const selectedState = svgMap.find(s => s.getAttribute('id') === type.toLowerCase());
+    if (typeToUse !== 'br') {
+      const selectedState = svgMap.find(s => s.getAttribute('id') === typeToUse);
     selectedState.classList.add(selectedStateClass);
     }
 
-    DOM.zoomState(type);
+    DOM.zoomState(typeToUse);
 
     document
       .querySelectorAll('#app__states .state')
@@ -111,9 +128,9 @@ var DOM = (function() {
 
     el.classList.add(selectedClass);
 
-    window.location.hash = type.toLowerCase();
+    window.location.hash = typeToUse;
 
-    DataManipulation.setDataSlots(type === 'BR' ? '' : type);
+    DataManipulation.setDataSlots(typeToUse === 'br' ? '' : type);
   };
 
   const getPreloadImageTemplate = uf => {
@@ -133,5 +150,5 @@ var DOM = (function() {
     document.body.appendChild($div);
   };
 
-  return { buildStates, changeSelected, preloadImages, zoomState };
+  return { buildStates, changeSelected, preloadImages, zoomState, changeHash };
 })();

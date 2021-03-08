@@ -100,7 +100,6 @@ html, body {
   }
 
 #app__map {
-  /* display: none; */
   position: fixed;
   top: 0;
   right: 0;
@@ -110,19 +109,12 @@ html, body {
   height: 100%;
   margin-left: 12%;
 
-  /* background-image: url('../images/2560x1440/VACINACAO_BR_04.png'); */
   background-position: 55% 0;
   background-repeat: no-repeat;
   background-size: cover;
 
   transition: background-image 1s ease-in-out;
 }
-
-/* .map--cover {
-  margin-left: 14%;
-  padding-top: 2%;
-  opacity: 0.7;
-} */
 
 .map-full {
   display: flex;
@@ -151,6 +143,7 @@ html, body {
   font-size: 14px;
   cursor: pointer;
   opacity: 0.5;
+  pointer-events: none;
 }
 
 .map-svg a {
@@ -168,35 +161,6 @@ html, body {
   stroke-width: 2px;
   opacity: 1 !important;
 }
-
-#app__map.map--ac { background-image: url('../images/2560x1440/VACINACAO_AC_04.png'); }
-#app__map.map--al { background-image: url('../images/2560x1440/VACINACAO_AL_04.png'); }
-#app__map.map--am { background-image: url('../images/2560x1440/VACINACAO_AM_04.png'); }
-#app__map.map--ap { background-image: url('../images/2560x1440/VACINACAO_AP_04.png'); }
-#app__map.map--ba { background-image: url('../images/2560x1440/VACINACAO_BA_04.png'); }
-/* #app__map.map--br { background-image: url('../images/2560x1440/VACINACAO_BR_04.png'); } */
-#app__map.map--ce { background-image: url('../images/2560x1440/VACINACAO_CE_04.png'); }
-#app__map.map--df { background-image: url('../images/2560x1440/VACINACAO_DF_04.png'); }
-#app__map.map--es { background-image: url('../images/2560x1440/VACINACAO_ES_04.png'); }
-#app__map.map--go { background-image: url('../images/2560x1440/VACINACAO_GO_04.png'); }
-#app__map.map--ma { background-image: url('../images/2560x1440/VACINACAO_MA_04.png'); }
-#app__map.map--mg { background-image: url('../images/2560x1440/VACINACAO_MG_04.png'); }
-#app__map.map--ms { background-image: url('../images/2560x1440/VACINACAO_MS_04.png'); }
-#app__map.map--mt { background-image: url('../images/2560x1440/VACINACAO_MT_04.png'); }
-#app__map.map--pa { background-image: url('../images/2560x1440/VACINACAO_PA_04.png'); }
-#app__map.map--pb { background-image: url('../images/2560x1440/VACINACAO_PB_04.png'); }
-#app__map.map--pe { background-image: url('../images/2560x1440/VACINACAO_PE_04.png'); }
-#app__map.map--pi { background-image: url('../images/2560x1440/VACINACAO_PI_04.png'); }
-#app__map.map--pr { background-image: url('../images/2560x1440/VACINACAO_PR_04.png'); }
-#app__map.map--rj { background-image: url('../images/2560x1440/VACINACAO_RJ_04.png'); }
-#app__map.map--rn { background-image: url('../images/2560x1440/VACINACAO_RN_04.png'); }
-#app__map.map--ro { background-image: url('../images/2560x1440/VACINACAO_RO_04.png'); }
-#app__map.map--rr { background-image: url('../images/2560x1440/VACINACAO_RR_04.png'); }
-#app__map.map--rs { background-image: url('../images/2560x1440/VACINACAO_RS_04.png'); }
-#app__map.map--sc { background-image: url('../images/2560x1440/VACINACAO_SC_04.png'); }
-#app__map.map--se { background-image: url('../images/2560x1440/VACINACAO_SE_04.png'); }
-#app__map.map--sp { background-image: url('../images/2560x1440/VACINACAO_SP_04.png'); }
-#app__map.map--to { background-image: url('../images/2560x1440/VACINACAO_TO_04.png'); }
 
 #app__map .r7-logo {
   display: block;
