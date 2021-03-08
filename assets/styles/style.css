@@ -100,7 +100,7 @@ html, body {
   }
 
 #app__map {
-  display: none;
+  /* display: none; */
   position: fixed;
   top: 0;
   right: 0;
@@ -110,7 +110,7 @@ html, body {
   height: 100%;
   margin-left: 12%;
 
-  background-image: url('../images/2560x1440/VACINACAO_BR_04.png');
+  /* background-image: url('../images/2560x1440/VACINACAO_BR_04.png'); */
   background-position: 55% 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -118,43 +118,55 @@ html, body {
   transition: background-image 1s ease-in-out;
 }
 
-.map--cover {
+/* .map--cover {
   margin-left: 14%;
   padding-top: 2%;
   opacity: 0.7;
-}
+} */
 
-svg {
-  width: 64%;
+.map-full {
+  display: flex;
+  width: 100%;
   height: 100%;
+  justify-content: center;
 }
 
-svg path {
+.map-svg {
+  width: 100%;
+  height: 100%;
+  padding: 3%;
+  max-width: 900px;
+}
+
+.map-svg .map-state--path {
   fill: #00212a;
+  opacity: 0.5;
 }
 
-svg text {
+.map-svg text {
   fill: #000;
   stroke: #000;
   stroke-width: 1px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  cursor: pointer
+  cursor: pointer;
+  opacity: 0.5;
 }
 
-svg a {
+.map-svg a {
   text-decoration: none
 }
 
-svg a:hover {
+.map-svg a:hover {
   cursor: pointer;
   text-decoration: none
 }
 
-svg a:hover path {
+.map-svg a:hover .map-state--path, .map-svg--selected {
   fill: #00e1f3 !important;
   stroke: #fff;
   stroke-width: 2px;
+  opacity: 1 !important;
 }
 
 #app__map.map--ac { background-image: url('../images/2560x1440/VACINACAO_AC_04.png'); }
@@ -162,7 +174,7 @@ svg a:hover path {
 #app__map.map--am { background-image: url('../images/2560x1440/VACINACAO_AM_04.png'); }
 #app__map.map--ap { background-image: url('../images/2560x1440/VACINACAO_AP_04.png'); }
 #app__map.map--ba { background-image: url('../images/2560x1440/VACINACAO_BA_04.png'); }
-#app__map.map--br { background-image: url('../images/2560x1440/VACINACAO_BR_04.png'); }
+/* #app__map.map--br { background-image: url('../images/2560x1440/VACINACAO_BR_04.png'); } */
 #app__map.map--ce { background-image: url('../images/2560x1440/VACINACAO_CE_04.png'); }
 #app__map.map--df { background-image: url('../images/2560x1440/VACINACAO_DF_04.png'); }
 #app__map.map--es { background-image: url('../images/2560x1440/VACINACAO_ES_04.png'); }
