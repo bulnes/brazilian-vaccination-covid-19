@@ -162,7 +162,7 @@ html, body {
 }
 
 .r7-button {
-  height: 35px;
+  height: 40px;
   width: 160px;
   background-color: transparent;
   border: transparent;
@@ -174,8 +174,8 @@ html, body {
 }
 
 .r7-button img {
-  height: 35px;
-  width: 37px;
+  height: 25px;
+  width: 27px;
 }
 
 .r7-button__text {
