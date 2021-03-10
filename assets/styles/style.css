@@ -160,6 +160,34 @@ html, body {
   left: 25px;
 }
 
+.home {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.r7-button {
+  height: 40px;
+  width: 160px;
+  background-color: transparent;
+  border: transparent;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.r7-button img {
+  height: 25px;
+  width: 27px;
+}
+
+.r7-button__text {
+  margin-right: 10px;
+}
+
 #app__states {
   background-color: #07262e;
   background-image: url('../images/aside-background.png');
@@ -346,6 +374,7 @@ html, body {
     color: #00e1f3;
   }
 
+
 @media (max-width: 1150px) {
 
   #app__map {
@@ -411,6 +440,10 @@ html, body {
   #app__states {
     width: 18%;
     min-width: 150px;
+  }
+
+  .home {
+    top: 5%;
   }
 
 }
@@ -494,15 +527,6 @@ html, body {
     padding-top: 0;
     padding-bottom: 32px;
     background-image: none;
-
-    /* 
-    ajustar tamanho da exibição do mapa aqui
-    width: 100%;
-    height: calc(100% - 56.25vw - 50px);
-    margin: calc(56.25vw + 210px) 0 32px 0;
-    padding-top: 0;
-    padding-bottom: 32px;
-    background-image: none; */
    }
     #app__numbers .numbers__label {
       margin-bottom: -3px;
