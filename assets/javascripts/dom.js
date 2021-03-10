@@ -85,15 +85,14 @@ var DOM = (function() {
     document.querySelectorAll('.map-state--path').forEach(state => {
       state.onclick = function() {
         const element = document.querySelector(`[data-uf=${state.id.toUpperCase()}]`);
-        window.console.log(state.id);
         DOM.changeSelected(element, state.id);
       }
     });
 
-    window.addEventListener('hashchange', changeHash(window.location.hash));
+    window.addEventListener('hashchange', handleHash(window.location.hash));
   };
 
-  const changeHash = function(hash) {
+  const handleHash = function(hash) {
     let hashToUse = hash ? hash.substr(1) : window.location.hash.substr(1);
     if (hashToUse !== '') {
       if (!States.getState(hashToUse.toUpperCase())) {
@@ -130,6 +129,10 @@ var DOM = (function() {
 
     window.location.hash = typeToUse;
 
+    if (window.innerWidth <= 575) {
+      el.scrollIntoView({ inline: 'center'});
+    }
+
     DataManipulation.setDataSlots(typeToUse === 'br' ? '' : type);
   };
 
@@ -150,5 +153,5 @@ var DOM = (function() {
     document.body.appendChild($div);
   };
 
-  return { buildStates, changeSelected, preloadImages, zoomState, changeHash };
+  return { buildStates, changeSelected, preloadImages, zoomState, handleHash };
 })();

@@ -108,19 +108,7 @@ html, body {
   width: 60%;
   height: 100%;
   margin-left: 12%;
-
-  background-position: 55% 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  transition: background-image 1s ease-in-out;
-}
-
-.map-full {
   display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
 }
 
 .map-svg {
@@ -128,6 +116,7 @@ html, body {
   height: 100%;
   padding: 3%;
   max-width: 900px;
+  margin: 0 auto;
 }
 
 .map-svg .map-state--path {
@@ -171,7 +160,6 @@ html, body {
   left: 25px;
 }
 
-
 #app__states {
   background-color: #07262e;
   background-image: url('../images/aside-background.png');
@@ -187,6 +175,12 @@ html, body {
   top: 0;
   left: 0;
   z-index: 2;
+}
+
+#app__states .state.state--selected {
+  padding-right: 4px;
+  border: #fff solid 1px;
+  border-radius: 5px;
 }
 
 #app__states::-webkit-scrollbar {
@@ -362,6 +356,10 @@ html, body {
     background-position: 50% 0;
   }
 
+  .map-svg {
+    height: 70%;
+  }
+
   #app__states {
     width: 23%;
     padding-bottom: 42px;
@@ -437,6 +435,11 @@ html, body {
     height: 56.25vw;
   }
 
+  .map-svg {
+    width: 55%;
+    height: 100%;
+  }
+
     #app__map .r7-logo {
       bottom: 5px;
       left: 15px;
@@ -474,6 +477,7 @@ html, body {
     }
     #app__states .state.state--selected {
       background-color: #fff;
+      padding: 8px 14px;
     }
     #app__states .state__uf {
       width: 100%;
@@ -490,6 +494,15 @@ html, body {
     padding-top: 0;
     padding-bottom: 32px;
     background-image: none;
+
+    /* 
+    ajustar tamanho da exibição do mapa aqui
+    width: 100%;
+    height: calc(100% - 56.25vw - 50px);
+    margin: calc(56.25vw + 210px) 0 32px 0;
+    padding-top: 0;
+    padding-bottom: 32px;
+    background-image: none; */
    }
     #app__numbers .numbers__label {
       margin-bottom: -3px;
