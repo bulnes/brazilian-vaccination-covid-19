@@ -464,7 +464,7 @@ html, body {
 
   #app__map {
     width: 100%;
-    margin: 50px 0 0;
+    margin: 65px 0 0;
     height: 56.25vw;
   }
 
@@ -478,24 +478,63 @@ html, body {
       left: 15px;
     }
     #app__map .r7-logo img {
-      width: 62px;
-      height: 13px;
+      width: 69px;
+      height: 39px;
     }
 
   #app__states {
-    height: 50px;
+    height: 80px;
     width: 100%;
     padding: 0;
     overflow-y: hidden;
     overflow-x: scroll;
     display: flex;
-    align-items: center;
     background-image: none;
+    align-items: flex-end;
+    padding-bottom: 10px;
   }
+    #app__states .region {
+      position: absolute;
+      display: block;
+      text-align: left;
+      border-bottom: 2px solid #007781;
+      top: 0;
+    }
+
+    /*região norte*/
+    #app__states h3:nth-of-type(1){
+      left: 77px;
+      width: 464px;
+    } 
+
+    /*região nordeste*/
+    #app__states h3:nth-of-type(2){
+      left: 558px;
+      width: 585px;
+    } 
+
+    /*região centro-oeste*/
+    #app__states h3:nth-of-type(3){
+      left: 1163px;
+      width: 260px;  
+    } 
+
+    /*região sudeste*/
+    #app__states h3:nth-of-type(4){
+      left: 1441px;
+      width: 248px;  
+    } 
+
+    /*região sul*/
+    #app__states h3:nth-of-type(5){
+      left: 1709px;
+      width: 179px;  
+      } 
+
     #app__states::-webkit-scrollbar {
       height: 5px;
     }
-    #app__states .region, #app__states .state__name {
+    #app__states .state__name, #app__states .region::before {
       display: none;
     }
     #app__states .state {
