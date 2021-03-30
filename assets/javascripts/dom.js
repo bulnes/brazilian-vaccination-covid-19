@@ -71,7 +71,7 @@ var DOM = (function() {
       }
 
       html += `
-        <div class="state" data-uf="${uf}" onclick="DOM.changeSelected(this, '${uf}')">
+        <div class="state" data-uf="${uf}" onclick="DOM.changeSelected(this, '${uf}', 'menu')">
           <span class="state__name">${state}</span> 
           <span class="state__uf">${uf}</span>
         </div>
@@ -85,7 +85,7 @@ var DOM = (function() {
     document.querySelectorAll('.map-state--path').forEach(state => {
       state.onclick = function() {
         const element = document.querySelector(`[data-uf=${state.id.toUpperCase()}]`);
-        DOM.changeSelected(element, state.id);
+        DOM.changeSelected(element, state.id, 'map');
       }
     });
 
@@ -104,8 +104,8 @@ var DOM = (function() {
     }
   }
 
-  const changeSelected = function(el, type) {
-    const typeToUse = type.toLowerCase();
+  const changeSelected = function(el, hash, origin = '') {
+    const hashToUse = hash.toLowerCase();
 
     const selectedClass = 'state--selected';
     const selectedStateClass = 'map-svg--selected';
@@ -114,12 +114,12 @@ var DOM = (function() {
 
     const svgMap = [...document.querySelectorAll('.map-state--path')];
     
-    if (typeToUse !== 'br') {
-      const selectedState = svgMap.find(s => s.getAttribute('id') === typeToUse);
+    if (hashToUse !== 'br') {
+      const selectedState = svgMap.find(s => s.getAttribute('id') === hashToUse);
     selectedState.classList.add(selectedStateClass);
     }
 
-    DOM.zoomState(typeToUse);
+    DOM.zoomState(hashToUse);
 
     document
       .querySelectorAll('#app__states .state')
@@ -127,13 +127,17 @@ var DOM = (function() {
 
     el.classList.add(selectedClass);
 
-    window.location.hash = typeToUse;
+    window.location.hash = hashToUse;
 
     if (window.innerWidth <= 575) {
       el.scrollIntoView({ inline: 'center'});
     }
 
-    DataManipulation.setDataSlots(typeToUse === 'br' ? '' : type);
+    if (origin) {
+      TagManager.handleClickEvent(hashToUse, origin);
+    }
+
+    DataManipulation.setDataSlots(hashToUse === 'br' ? '' : hash);
   };
 
   const getPreloadImageTemplate = uf => {

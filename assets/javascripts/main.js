@@ -26,6 +26,7 @@ var Main = (() => {
     DataManipulation.setDataSlots();
     document.getElementById('app').classList.remove('app--loading');
     DOM.preloadImages();
+    TagManager.handleShareEvent();
   };
 
   const start = () => {
