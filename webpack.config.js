@@ -9,6 +9,10 @@ module.exports = {
       arrowFunction: false,
     },
   },
+  devServer: {
+    contentBase: path.join(__dirname),
+    open: true,
+  },
   module: {
     rules: [
       {
