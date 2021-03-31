@@ -40,7 +40,6 @@ var Main = (() => {
   return {
     start
   };
-  
 })(); 
 
 window.addEventListener('load', Main.start);
