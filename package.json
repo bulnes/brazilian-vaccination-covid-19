@@ -1,0 +1,9 @@
+{
+  "name": "brazilian-vaccination-covid-19",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/bulnes/brazilian-vaccination-covid-19.git",
+  "author": "Willian Kenji Hira <willian.kenji.hira@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
