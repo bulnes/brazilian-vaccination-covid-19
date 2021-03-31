@@ -5,5 +5,10 @@
   "repository": "https://github.com/bulnes/brazilian-vaccination-covid-19.git",
   "author": "Willian Kenji Hira <willian.kenji.hira@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
 }
