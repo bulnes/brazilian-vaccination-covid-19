@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
@@ -8,11 +9,18 @@ module.exports = {
     environment: {
       arrowFunction: false,
     },
+    clean: true,
   },
   devServer: {
-    contentBase: path.join(__dirname),
+    contentBase: path.join(__dirname, 'dist'),
     open: true,
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.resolve(__dirname, 'src', 'templates', 'index.html'),
+    }),
+  ],
   module: {
     rules: [
       {
@@ -25,6 +33,21 @@ module.exports = {
             plugins: ['@babel/plugin-transform-runtime'],
           },
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images',
+            },
+          },
+        ],
       },
     ],
   },
