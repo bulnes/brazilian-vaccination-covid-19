@@ -16,7 +16,7 @@
   },
   "lint-staged": {
     "**/*.js": [
-      "eslint --fix",
+      "eslint ./assets --fix",
       "git add"
     ]
   },
