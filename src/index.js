@@ -1,3 +1,8 @@
-const soma = (a, b) => a + b;
+class Professor {
+  constructor(name) {
+    this.name = name;
+  }
+}
 
-window.console.log(soma(1, 1));
+const prof = new Professor('Girafales');
+window.console.log(prof.name);
