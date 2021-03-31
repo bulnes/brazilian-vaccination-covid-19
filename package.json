@@ -6,6 +6,9 @@
   "author": "Willian Kenji Hira <willian.kenji.hira@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "test": "eslint ./assets"
+  },
   "devDependencies": {
     "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
