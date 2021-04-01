@@ -1,18 +1,18 @@
-const Vacination = (() => {
+import { getLocalStorage } from './data-storage';
+import convertToNumber from './helpers/convert-to-number';
 
-  return {
-    getVaccinatedsByUF: (uf, round) => {
-      const data = DataStorage.getLocalStorage();
-      const attr = round === 2 ? 'segunda_dose' : 'vacinados';
+const getVaccinatedsByUF = (uf, round) => {
+  const data = getLocalStorage();
+  const attr = round === 2 ? 'segunda_dose' : 'vacinados';
 
-      if (uf) {
-        const state = data.find(state => state.uf.toLowerCase() === uf.toLowerCase());
-        return Utils.convertToNumber(state[attr]);
-      }
-
-      return data
-        .map(state => Utils.convertToNumber(state[attr]))
-        .reduce((a, b) => a + b, 0);
-    } 
+  if (uf) {
+    const states = data.find((state) => state.uf.toLowerCase() === uf.toLowerCase());
+    return convertToNumber(states[attr]);
   }
-})();
+
+  return data
+    .map((state) => convertToNumber(state[attr]))
+    .reduce((a, b) => a + b, 0);
+};
+
+export default getVaccinatedsByUF;

@@ -1,33 +1,20 @@
-const DataStorage = (() => {
+let mapData = [];
 
-  let mapData = [];
+// const storageKey = 'vaccination:storage';
+// const dateKey = 'vaccination:date';
 
-  const storageKey = 'vaccination:storage';
-  const dateKey = 'vaccination:date';
+const getNow = () => (new Date()).toLocaleDateString();
 
-  const getNow = () => (new Date()).toLocaleDateString();
+const isValidLocalStorage = () => false;
 
-  const isValidLocalStorage = () => {
-    // localStorage.getItem(storageKey) && 
-    // localStorage.getItem(dateKey) === getNow();
-    return false;
-  }
+const getLocalStorage = () => mapData;
 
-  const getLocalStorage = () => {
-    // JSON.parse(localStorage.getItem(storageKey));
-    return mapData;
-  }
+const setLocalStorage = (data) => {
+  // localStorage.setItem(storageKey, JSON.stringify(data));
+  // localStorage.setItem(dateKey, getNow());
+  mapData = data;
+};
 
-  const setLocalStorage = data => { 
-    // localStorage.setItem(storageKey, JSON.stringify(data));
-    // localStorage.setItem(dateKey, getNow());
-
-    mapData = data;
-  };
-
-  return {
-    isValidLocalStorage,
-    getLocalStorage,
-    setLocalStorage
-  };
-})();
+export {
+  getNow, isValidLocalStorage, getLocalStorage, setLocalStorage,
+};

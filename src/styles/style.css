@@ -17,7 +17,7 @@
 }
 
 html, body {
-  background-image: url('../images/2560x1440/fundo.jpg');
+  background-image: url('../images/2560x1440/fundo-min.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -27,6 +27,11 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+}
+
+body {
+  visibility: visible;
+  display: block;
 }
 
 #preload {

@@ -1,23 +1,26 @@
 try {
   let port;
-  window.addEventListener('message', onMessage);
-  window.addEventListener('hashchange', onHashChange);
 
-  function onHashChange() {
+  const onHashChange = () => {
     if (port) {
       const { hash } = window.location;
       port.postMessage(hash);
     }
-  }
+  };
 
-  function onMessage(e) {
-    if (e.data.startsWith('#')) {
+  const onMessage = (e) => {
+    if (e.data.startsWith && e.data.startsWith('#')) {
       window.location.hash = e.data.replace('#', '');
     }
 
-    port = e.ports[0];
+    [port] = e.ports;
     if (window.location.hash) {
       port.postMessage(window.location.hash);
     }
-  }
-} catch (e) {}
+  };
+
+  window.addEventListener('message', onMessage);
+  window.addEventListener('hashchange', onHashChange);
+} catch (e) {
+  // unused
+}

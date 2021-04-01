@@ -1,47 +1,41 @@
-var DataLoader = (function() {
+const defaultFunction = () => {};
 
-  var defaultFunction = new Function();
+const defaultCallbacks = {
+  before: defaultFunction,
+  success: defaultFunction,
+  error: defaultFunction,
+};
 
-  var callbacks = {
-    'before': defaultFunction,
-    'success': defaultFunction,
-    'error': defaultFunction,
-  };
+const src = 'https://sc.r7.com/vacinometro/vacinometro.json';
 
-  var src = 'https://sc.r7.com/vacinometro/vacinometro.json';
-
-  var getCallbacks = function(cb) {
-    if (cb) {
-      var keys = Object.keys(cb);
-      for (var i = 0; i < keys.length; i++) {
-        var index = keys[i];
-        callbacks[index] = cb[index] ? cb[index] : callbacks[index];
-      }
+const getCallbacks = (cb) => {
+  if (cb) {
+    const keys = Object.keys(cb);
+    for (let i = 0; i < keys.length; i += 1) {
+      const index = keys[i];
+      defaultCallbacks[index] = cb[index] ? cb[index] : defaultCallbacks[index];
     }
+  }
 
-    return callbacks;
+  return defaultCallbacks;
+};
+
+const getData = (cb) => {
+  const callbacks = getCallbacks(cb);
+  callbacks.before();
+
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const data = JSON.parse(xhr.response);
+      callbacks.success(data);
+    } else if (xhr.readyState === 4 && xhr.status !== 200) {
+      callbacks.error();
+    }
   };
 
-  var getData = function(cb) {
-    var callbacks = getCallbacks(cb);
-    callbacks.before();
+  xhr.open('GET', src, true);
+  xhr.send();
+};
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        var data = JSON.parse(xhr.response);
-        callbacks.success(data);
-      } 
-      else if (xhr.readyState == 4 && xhr.status != 200) {
-        callbacks.error();
-      }
-    };
-
-    xhr.open('GET', src, true);
-    xhr.send();
-  };
-
-  return {
-    getData: getData
-  };
-})();
+export default getData;
