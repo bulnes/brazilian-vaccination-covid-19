@@ -4,6 +4,7 @@ import { setLocalStorage } from './data-storage';
 import { buildStates } from './dom';
 import getSnippetData from './snippet-loader';
 import redirectToRightDatabase from './snippet-use-checker';
+import { handleShareEvent } from './tag-manager';
 import './message';
 
 const initApp = () => {
@@ -18,6 +19,7 @@ const initApp = () => {
 
   setDataSlots();
   document.getElementById('app').classList.remove('app--loading');
+  handleShareEvent();
 };
 
 const configureApp = (data) => {

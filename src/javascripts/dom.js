@@ -1,5 +1,6 @@
 import setDataSlots from './data-manipulation';
 import { getState, getStates } from './states';
+import { handleClickEvent } from './tag-manager';
 
 const zoomState = (id = 'br') => {
   const TIMESTEP_IN = 0.8;
@@ -55,8 +56,8 @@ const zoomState = (id = 'br') => {
   });
 };
 
-const changeSelected = (el, type) => {
-  const typeToUse = type.toLowerCase();
+const changeSelected = (el, hash, origin = '') => {
+  const hashToUse = hash.toLowerCase();
 
   const selectedClass = 'state--selected';
   const selectedStateClass = 'map-svg--selected';
@@ -65,12 +66,12 @@ const changeSelected = (el, type) => {
 
   const svgMap = [...document.querySelectorAll('.map-state--path')];
 
-  if (typeToUse !== 'br') {
-    const selectedState = svgMap.find((s) => s.getAttribute('id') === typeToUse);
+  if (hashToUse !== 'br') {
+    const selectedState = svgMap.find((s) => s.getAttribute('id') === hashToUse);
     selectedState.classList.add(selectedStateClass);
   }
 
-  zoomState(typeToUse);
+  zoomState(hashToUse);
 
   document
     .querySelectorAll('#app__states .state')
@@ -78,13 +79,17 @@ const changeSelected = (el, type) => {
 
   el.classList.add(selectedClass);
 
-  window.location.hash = typeToUse;
+  window.location.hash = hashToUse;
 
   if (window.innerWidth <= 575) {
     el.scrollIntoView({ inline: 'center' });
   }
 
-  setDataSlots(typeToUse === 'br' ? '' : type);
+  if (origin) {
+    handleClickEvent(hashToUse, origin);
+  }
+
+  setDataSlots(hashToUse === 'br' ? '' : hash);
 };
 
 window.changeSelected = changeSelected;
@@ -118,7 +123,7 @@ const buildStates = () => {
     }
 
     html += `
-      <div class="state" data-uf="${uf}" onclick="changeSelected(this, '${uf}')">
+      <div class="state" data-uf="${uf}" onclick="changeSelected(this, '${uf}', 'menu')">
         <span class="state__name">${state}</span> 
         <span class="state__uf">${uf}</span>
       </div>
@@ -132,7 +137,7 @@ const buildStates = () => {
   document.querySelectorAll('.map-state--path').forEach((state) => {
     state.addEventListener('click', () => {
       const element = document.querySelector(`[data-uf=${state.id.toUpperCase()}]`);
-      changeSelected(element, state.id);
+      changeSelected(element, state.id, 'map');
     });
   });
 

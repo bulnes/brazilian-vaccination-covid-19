@@ -2,14 +2,30 @@
 <html lang="pt-br">
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10631407-1"></script>
+  <!-- Google Tag Manager -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-10631407-1');
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start': new
+          Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'r7dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'r7dataLayer', 'GTM-N4WN2MJ');
+  </script>
+  <script>
+      window.r7dataLayer = window.r7dataLayer || [];
+      window.r7dataLayer.push({
+        event: "pageview",
+        content: {
+          path: "saude/coronavirus/mapa-da-vacinacao",
+          title: "Mapa de Vacinação - Saúde - R7 Coronavírus",
+          type: "artigo",
+          section1: "noticias",
+          section2: "saude",
+          section3: "coronavirus"
+        }
+      });
   </script>
 
   <meta charset="UTF-8">
@@ -56,6 +72,11 @@
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4WN2MJ" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <div id="app" class="app--loading">
     <main id="app__map" class="map--br">
       <%= require('html-loader!./partials/mapa.html').default %>
