@@ -8,7 +8,7 @@ var DataLoader = (function() {
     'error': defaultFunction,
   };
 
-  var src = 'https://sc.r7.com/vacinometro/vacinometro.json';
+  var src = 'https://enigmatic-inlet-66337.herokuapp.com/';
 
   var getCallbacks = function(cb) {
     if (cb) {
