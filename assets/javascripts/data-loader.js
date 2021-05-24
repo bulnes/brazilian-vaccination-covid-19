@@ -8,7 +8,8 @@ var DataLoader = (function() {
     'error': defaultFunction,
   };
 
-  var src = 'https://enigmatic-inlet-66337.herokuapp.com/';
+  // var src = 'https://enigmatic-inlet-66337.herokuapp.com/';
+  var src = 'https://vaccination-api.herokuapp.com/';
 
   var getCallbacks = function(cb) {
     if (cb) {
