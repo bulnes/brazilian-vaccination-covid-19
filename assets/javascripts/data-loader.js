@@ -9,7 +9,8 @@ var DataLoader = (function() {
   };
 
   // var src = 'https://enigmatic-inlet-66337.herokuapp.com/';
-  var src = 'https://vaccination-api.herokuapp.com/'; // bruno_bulnes
+  // var src = 'https://vaccination-api.herokuapp.com/'; // bruno_bulnes
+  var src = 'https://cda-vaccination-api-prod.r7.com/';
 
   var getCallbacks = function(cb) {
     if (cb) {
